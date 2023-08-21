@@ -27,14 +27,14 @@ form.addEventListener('submit', function (event) {
     feedbackData[name] = value;
   }
 
-  if (feedbackData.email && feedbackData.message) {
+  if (feedbackData.email.trim() === '' || feedbackData.message.trim() === '') {
+    alert('Please fill in all fields before submitting.');
+  } else {
     console.log('Form submitted:', feedbackData);
 
     updateLocalStorage(formData);
 
     form.reset();
-  } else {
-    alert('Please fill in all fields before submitting.');
   }
 });
 
@@ -47,4 +47,3 @@ if (savedFeedbackState) {
     }
   }
 }
- 
